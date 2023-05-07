@@ -10,7 +10,6 @@ import { logo } from '../assets'
 import { links } from '../assets/constants'
 
 const NavLinks = ({ handleClick }: any) => {
-  console.log(links)
   return (
     <div className="mt-10">
       {links.map((link) => {
