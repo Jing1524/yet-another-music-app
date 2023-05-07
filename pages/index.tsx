@@ -2,8 +2,8 @@ import Image from 'next/image'
 import { useSelector } from 'react-redux'
 
 import { Inter } from 'next/font/google'
-import { Sidebar, Searchbar, TopPlay, MusicPlayer } from '@/components'
 import Layout from '@/components/Layout'
+import { TopPlay } from '@/components'
 
 const inter = Inter({ subsets: ['latin'] })
 
