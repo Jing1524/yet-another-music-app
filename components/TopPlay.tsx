@@ -14,6 +14,7 @@ const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, hand
     <div className="w-full flex flex-row items-center hover:bg-[#C1D0B5] py-2 p-4 rounded-lg cursor-pointer mb-2">
       <h3 className="mr-3 text-base font-bold text-white">{idx + 1}.</h3>
       <div className="flex flex-row items-center justify-between flex-1">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={song?.images?.coverart} alt={song?.title} className="w-20 h-20 rounded-lg " />
         <div className="flex flex-col justify-center flex-1 mx-3">
           <Link href={`/songs/${song.key}`}>
@@ -52,12 +53,10 @@ const TopPlay = () => {
   const topPlays = data?.slice(0, 5)
 
   const handlePauseClick = () => {
-    console.log('but not this one?????????')
     dispatch(playPause(false))
   }
 
   const handlePlayClick = (song: any, idx: number) => {
-    console.log('playyyyyyyyy')
     dispatch(setActiveSong({ song, data, idx }))
     dispatch(playPause(true))
   }
@@ -110,6 +109,7 @@ const TopPlay = () => {
                 className="rounded-full shadow-lg animate-slideright"
               >
                 <Link href={`/artists/${song?.artists[0].adamid}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={song?.images.background} alt="artist name" className="object-cover w-full rounded-full" />
                 </Link>
               </SwiperSlide>

@@ -12,7 +12,6 @@ const SongDetails = () => {
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   const { data: songData, isFetching: isFetchingSongDetails } = useGetSongDetailsQuery(query.slug)
   const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(query.slug)
-  console.log({ data })
 
   const handlePauseClick = () => {
     dispatch(playPause(false))

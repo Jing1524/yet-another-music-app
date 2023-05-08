@@ -10,7 +10,6 @@ const SongCard = ({ song, idx, data, isPlaying, activeSong }: any) => {
   const dispatch = useDispatch()
 
   const handlePauseClick = () => {
-    console.log('this pause works???????')
     dispatch(playPause(false))
   }
 
@@ -35,6 +34,7 @@ const SongCard = ({ song, idx, data, isPlaying, activeSong }: any) => {
             activeSong={activeSong}
           />
         </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img alt="song image" src={song.images?.coverart} />
       </div>
       <div className="flex flex-col mt-4">

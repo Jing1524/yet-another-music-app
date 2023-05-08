@@ -6,7 +6,6 @@ import { HiOutlineMenu } from 'react-icons/hi'
 import Lottie from 'react-lottie'
 import astronautMusic from '../assets/astronautMusic.json'
 
-import { logo } from '../assets'
 import { links } from '../assets/constants'
 
 const NavLinks = ({ handleClick }: any) => {
