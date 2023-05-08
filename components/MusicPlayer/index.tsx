@@ -10,6 +10,7 @@ import VolumeBar from './VolumeBar'
 
 const MusicPlayer = () => {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } = useSelector((state: any) => state.player)
+
   const [duration, setDuration] = useState(0)
   const [seekTime, setSeekTime] = useState(0)
   const [appTime, setAppTime] = useState(0)
@@ -19,7 +20,7 @@ const MusicPlayer = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (currentSongs.length) dispatch(playPause(true))
+    if (currentSongs?.length) dispatch(playPause(true))
   }, [currentIndex])
 
   const handlePlayPause = () => {
@@ -36,7 +37,9 @@ const MusicPlayer = () => {
     dispatch(playPause(false))
 
     if (!shuffle) {
-      dispatch(nextSong((currentIndex + 1) % currentSongs.length))
+      console.log({ currentIndex })
+      const nextIndex = Number((currentIndex + 1) % currentSongs.length)
+      dispatch(nextSong(nextIndex))
     } else {
       dispatch(nextSong(Math.floor(Math.random() * currentSongs.length)))
     }
