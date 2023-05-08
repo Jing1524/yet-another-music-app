@@ -1,7 +1,9 @@
 import Link from 'next/link'
 
 const DetailsHeader = ({ artistId, artistData, songData }: any) => {
+  console.log(artistData)
   const artist = artistData?.artists[artistId].attributes
+
   return (
     <div className="relative flex flex-col w-full">
       <div className="w-full bg-gradient-to-l from-transparent to-black sm:h-48 h-28" />
