@@ -44,7 +44,11 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
         </div>
 
         {activeSong?.title && (
-          <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#99A98F] backdrop-blur-lg rounded-t-3xl z-10">
+          <div
+            className={`absolute h-28 bottom-0 left-0 right-0 flex animate-slideup backdrop-blur-lg rounded-t-3xl z-10 ${
+              darkMode ? 'bg-gradient-to-br from-white/10 to-[#99A98F]' : 'bg-gradient-to-br from-black/10 to-[#99A98F]'
+            }`}
+          >
             <MusicPlayer />
           </div>
         )}

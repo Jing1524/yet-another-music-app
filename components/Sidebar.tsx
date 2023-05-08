@@ -58,13 +58,20 @@ const Sidebar = () => {
         )}
       </div>
       <div
-        className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[#698269] backdrop-blur-lg z-10 p-6 md:hidden smooth-transition ${
+        className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl backdrop-blur-lg z-10 p-6 md:hidden smooth-transition ${
           mobileMenuOpen ? 'left-0' : '-left-full'
-        }`}
+        } ${darkMode ? 'from-black/50 to-[#617A55]' : 'from-white/10 to-[#617A55]'}`}
       >
         <Lottie options={defaultOptions} height={150} width={150} />
         <NavLinks handleClick={() => setMobileMenuOpen(false)} />
-        <button onClick={toggleDarkMode}>toggle</button>
+        <button
+          onClick={toggleDarkMode}
+          className={`${
+            darkMode && 'text-[#C1D0B5]'
+          } border border-2 border-[#C1D0B5] py-2 px-4 rounded-lg hover:bg-[#617A55]`}
+        >
+          toggle
+        </button>
       </div>
     </>
   )
