@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.dark {
+  @apply bg-[#000000] text-[#FFFFFF];
+}
+
 .active {
   @apply text-cyan-500;
 }

@@ -1,11 +1,13 @@
 import Head from 'next/head'
 import { ReactNode } from 'react'
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
 import Sidebar from './Sidebar'
 import MusicPlayer from './MusicPlayer'
 import Searchbar from './Searchbar'
 import TopPlay from './TopPlay'
+import { useModeToggle } from '@/context/modeProvider'
 
 type Props = {
   children?: ReactNode
@@ -14,7 +16,7 @@ type Props = {
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => {
   const { activeSong } = useSelector((state: any) => state.player)
-
+  const { darkMode } = useModeToggle()
   return (
     <div className="min-h-[100vh] overflow-x-hidden scroll-smooth">
       <Head>
@@ -25,7 +27,11 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
       </Head>
       <div className="relative flex">
         <Sidebar />
-        <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#99A98F]">
+        <div
+          className={`flex-1 flex flex-col ${
+            darkMode ? 'bg-gradient-to-br from-black to-[#99A98F]' : 'bg-gradient-to-br from-white to-[#99A98F]'
+          }`}
+        >
           <Searchbar />
           <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
             {/* all components */}

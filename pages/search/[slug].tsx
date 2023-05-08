@@ -19,7 +19,7 @@ const Search = () => {
   return (
     <Layout>
       <div className="flex flex-col ">
-        <h2 className="mt-4 mb-10 text-3xl font-bold text-left text-white">
+        <h2 className="mt-4 mb-10 text-3xl font-bold text-left">
           Showing results for <span>{searchTerm}</span>
         </h2>
         <div className="flex flex-wrap justify-center gap-8 sm:justify-start">

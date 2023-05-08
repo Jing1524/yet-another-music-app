@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 const DetailsHeader = ({ artistId, artistData, songData }: any) => {
-  console.log(artistData.data[0].avatar)
   return (
     <div className="relative flex flex-col w-full">
       <div className="w-full bg-gradient-to-l from-transparent to-black sm:h-48 h-28" />
@@ -18,15 +17,15 @@ const DetailsHeader = ({ artistId, artistData, songData }: any) => {
         />
 
         <div className="ml-5 ">
-          <p className="text-xl font-bold text-white sm:text-3xl">
+          <p className="text-xl font-bold sm:text-3xl">
             {artistId ? artistData?.data[0]?.attributes?.name : songData?.title}
           </p>
           {!artistId && (
-            <Link className="mt-2 text-base text-gray-400" href={`/artists/${songData?.artists[0].adamid}`}>
+            <Link className="mt-2 text-base" href={`/artists/${songData?.artists[0].adamid}`}>
               <p>{songData?.subtitle}</p>
             </Link>
           )}
-          <p className="mt-2 text-base text-gray-400">
+          <p className="mt-2 text-base ">
             {artistId ? artistData?.data[0]?.attributes?.genreNames[0] : songData?.genres?.primary}
           </p>
         </div>

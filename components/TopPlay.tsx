@@ -8,20 +8,22 @@ import { playPause, setActiveSong } from '../redux/features/playerSlice'
 import { useGetTopChartsQuery } from '../redux/services/shazamCore'
 import 'swiper/css'
 import 'swiper/css/free-mode'
+import { useModeToggle } from '@/context/modeProvider'
 
 const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, handlePlayClick }: any) => {
+  const { darkMode } = useModeToggle()
   return (
     <div className="w-full flex flex-row items-center hover:bg-[#C1D0B5] py-2 p-4 rounded-lg cursor-pointer mb-2">
-      <h3 className="mr-3 text-base font-bold text-white">{idx + 1}.</h3>
+      <h3 className={`mr-3 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{idx + 1}.</h3>
       <div className="flex flex-row items-center justify-between flex-1">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={song?.images?.coverart} alt={song?.title} className="w-20 h-20 rounded-lg " />
         <div className="flex flex-col justify-center flex-1 mx-3">
           <Link href={`/songs/${song.key}`}>
-            <p className="text-xl font-bold text-white">{song.title}</p>
+            <p className={`text-xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.title}</p>
           </Link>
           <Link href={`/artists/${song.artists[0].adamid}`}>
-            <p className="mt-1 text-base font-bold text-gray-300">{song.subtitle}</p>
+            <p className={`mt-1 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.subtitle}</p>
           </Link>
         </div>
       </div>
@@ -37,6 +39,7 @@ const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, hand
 }
 
 const TopPlay = () => {
+  const { darkMode } = useModeToggle()
   const dispatch = useDispatch()
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   // @ts-ignore
@@ -64,9 +67,9 @@ const TopPlay = () => {
     <div ref={divRef} className="flex-1 mb-6 ml-0 xl:ml-6 xl:mb-0 xl:max-w-[500px] max-w-full flex flex-col">
       <div className="flex flex-col w-full">
         <div className="flex items-center justify-between felx-row">
-          <h2 className="text-2xl font-bold text-white">Top Charts</h2>
+          <h2 className={`text-2xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>Top Charts</h2>
           <Link href="/top-charts">
-            <p className="text-base text-gray-300 curcor-pointer">See more</p>
+            <p className={`text-base curcor-pointer ${darkMode && 'text-[#C1D0B5]'}`}>See more</p>
           </Link>
         </div>
         <div className="flex flex-col gap-1 mt-4">
@@ -87,9 +90,9 @@ const TopPlay = () => {
       </div>
       <div className="flex flex-col w-full mt-8">
         <div className="flex items-center justify-between felx-row">
-          <h2 className="text-2xl font-bold text-white">Top Artists</h2>
+          <h2 className={`text-2xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>Top Artists</h2>
           <Link href="/top-artists">
-            <p className="text-base text-gray-300 curcor-pointer">See more</p>
+            <p className={`text-base curcor-pointer ${darkMode && 'text-[#C1D0B5]'}`}>See more</p>
           </Link>
         </div>
         <Swiper

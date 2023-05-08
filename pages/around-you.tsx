@@ -4,8 +4,11 @@ import { useSelector } from 'react-redux'
 import { Error, Loader, SongCard } from '@/components'
 import { useGetSongsByCountryQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
+import { draftMode } from 'next/dist/client/components/headers'
+import { useModeToggle } from '@/context/modeProvider'
 
 const AroundYou = () => {
+  const { darkMode } = useModeToggle()
   const [country, setCountry] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(true)
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
@@ -26,7 +29,7 @@ const AroundYou = () => {
   return (
     <Layout>
       <div className="flex flex-col ">
-        <h2 className="mt-4 mb-10 text-3xl font-bold text-left text-white">
+        <h2 className={`mt-4 mb-10 text-3xl font-bold text-left ${darkMode && 'text-[#C1D0B5]'}`}>
           Music Around <span>{country}</span>
         </h2>
         <div className="flex flex-wrap justify-center gap-8 sm:justify-start">
