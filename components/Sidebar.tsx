@@ -46,7 +46,12 @@ const Sidebar = () => {
       <div className={`md:flex hidden flex-col w-[200px] py-10 px-4 ${darkMode ? 'bg-[#191624]' : 'bg-[#C1D0B5]'}`}>
         <Lottie options={defaultOptions} height={150} width={150} />
         <NavLinks />
-        <button onClick={toggleDarkMode} className={`${darkMode && 'text-[#C1D0B5]'}`}>
+        <button
+          onClick={toggleDarkMode}
+          className={`${
+            darkMode && 'text-[#C1D0B5]'
+          } border border-2 border-[#C1D0B5] py-2 px-4 rounded-lg hover:bg-[#617A55]`}
+        >
           toggle
         </button>
       </div>
