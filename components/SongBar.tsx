@@ -5,8 +5,8 @@ import PlayPause from './PlayPause'
 
 const SongBar = ({ song, idx, artistId, isPlaying, activeSong, handlePauseClick, handlePlayClick }: any) => (
   <div
-    className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${
-      activeSong?.title === song?.title ? 'bg-[#4c426e]' : 'bg-transparent'
+    className={`w-full flex flex-row items-center hover:bg-[#C1D0B5] ${
+      activeSong?.title === song?.title ? 'bg-[#C1D0B5]' : 'bg-transparent'
     } py-2 p-4 rounded-lg cursor-pointer mb-2`}
   >
     <h3 className="mr-3 text-base font-bold text-white">{idx + 1}.</h3>
