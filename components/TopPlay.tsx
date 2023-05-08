@@ -26,7 +26,7 @@ const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, hand
       </div>
       <PlayPause
         isPlaying={isPlaying}
-        song={isPlaying}
+        song={song}
         handlePause={handlePauseClick}
         activeSong={activeSong}
         handlePlay={handlePlayClick}
@@ -50,11 +50,14 @@ const TopPlay = () => {
   }, [])
 
   const topPlays = data?.slice(0, 5)
+
   const handlePauseClick = () => {
+    console.log('but not this one?????????')
     dispatch(playPause(false))
   }
 
   const handlePlayClick = (song: any, idx: number) => {
+    console.log('playyyyyyyyy')
     dispatch(setActiveSong({ song, data, idx }))
     dispatch(playPause(true))
   }

@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout'
 import { Error, Loader, SongCard } from '../components'
 import { genres } from '@/assets/constants'
-import { useGetTopChartsQuery, useGetSongsByGenreQuery } from '../redux/services/shazamCore'
+import { useGetSongsByGenreQuery } from '../redux/services/shazamCore'
 import { selectGenreListId } from '@/redux/features/playerSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -14,8 +14,8 @@ const Discover = () => {
 
   const genreTitle = genres.find(({ value }) => value === genreListId)?.title
 
-  if (isFetching) return <Loader title="Loading songs..." />
-  if (error) return <Error />
+  // if (isFetching) return <Loader title="Loading songs..." />
+  // if (error) return <Error />
   return (
     <div className="flex flex-col">
       <div className="flex flex-col items-center justify-between mt-4 mb-10 sm:flex-row">

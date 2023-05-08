@@ -43,7 +43,6 @@ const AroundYou = () => {
             )
           })}
         </div>
-        CountryTracks
       </div>
     </Layout>
   )
