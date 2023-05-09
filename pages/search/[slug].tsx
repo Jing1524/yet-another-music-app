@@ -37,7 +37,6 @@ const Search = () => {
             )
           })}
         </div>
-        CountryTracks
       </div>
     </Layout>
   )

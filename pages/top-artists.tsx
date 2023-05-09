@@ -22,7 +22,6 @@ const TopArtists = () => {
             return <ArtistCard key={track.key} track={track} />
           })}
         </div>
-        CountryTracks
       </div>
     </Layout>
   )
