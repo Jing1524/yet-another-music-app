@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux'
 import { Error, Loader, SongCard } from '@/components'
 import { useGetSongsBySearchQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
+import { useModeToggle } from '@/context/modeProvider'
 
 const Search = () => {
+  const { darkMode } = useModeToggle()
   const { query } = useRouter()
   const searchTerm = query.slug
-  console.log(searchTerm)
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   //@ts-ignore
   const { data, isFetching, error } = useGetSongsBySearchQuery(searchTerm)
@@ -19,7 +20,7 @@ const Search = () => {
   return (
     <Layout>
       <div className="flex flex-col ">
-        <h2 className="mt-4 mb-10 text-3xl font-bold text-left">
+        <h2 className={`mt-4 mb-10 text-3xl font-bold text-left ${darkMode && 'text-[#C1D0B5]'}`}>
           Showing results for <span>{searchTerm}</span>
         </h2>
         <div className="flex flex-wrap justify-center gap-8 sm:justify-start">

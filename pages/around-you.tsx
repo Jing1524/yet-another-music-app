@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import { Error, Loader, SongCard } from '@/components'
 import { useGetSongsByCountryQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
-import { draftMode } from 'next/dist/client/components/headers'
 import { useModeToggle } from '@/context/modeProvider'
 
 const AroundYou = () => {
