@@ -6,7 +6,9 @@ import { setActiveSong, playPause } from '@/redux/features/playerSlice'
 
 import { useGetSongDetailsQuery, useGetRelatedSongsQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
+import { useModeToggle } from '@/context/modeProvider'
 const SongDetails = () => {
+  const { darkMode } = useModeToggle()
   const { query } = useRouter()
   const dispatch = useDispatch()
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
@@ -30,16 +32,16 @@ const SongDetails = () => {
       <div className="flex flex-col">
         <DetailsHeader artistId="" songData={songData} />
         <div className="mb-10">
-          <h2 className="text-3xl font-bold">Lyrics:</h2>
+          <h2 className={`text-3xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>Lyrics:</h2>
           <div className="mt-5">
             {songData?.sections[1].type === 'LYRICS' ? (
               songData?.sections[1].text.map((line: string, idx: number) => (
-                <p key={idx} className="text-base">
+                <p key={idx} className={`text-base ${darkMode && 'text-[#C1D0B5]'}`}>
                   {line}
                 </p>
               ))
             ) : (
-              <p className="my-1 text-base">Sorry, no lyrics found!</p>
+              <p className={`my-1 text-base ${darkMode && 'text-[#C1D0B5]'}`}>Sorry, no lyrics found!</p>
             )}
           </div>
         </div>

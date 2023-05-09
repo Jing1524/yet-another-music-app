@@ -13,7 +13,7 @@ import { useModeToggle } from '@/context/modeProvider'
 const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, handlePlayClick }: any) => {
   const { darkMode } = useModeToggle()
   return (
-    <div className="w-full flex flex-row items-center hover:bg-[#C1D0B5] py-2 p-4 rounded-lg cursor-pointer mb-2">
+    <div className="flex flex-row items-center w-full p-4 py-2 mb-2 rounded-lg cursor-pointer hover:bg-white/5">
       <h3 className={`mr-3 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{idx + 1}.</h3>
       <div className="flex flex-row items-center justify-between flex-1">
         {/* eslint-disable-next-line @next/next/no-img-element */}
