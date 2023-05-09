@@ -1,5 +1,4 @@
-import Layout from '@/components/Layout'
-import { Error, Loader, SongCard } from '../components'
+import { SongCard } from '../components'
 import { genres } from '@/assets/constants'
 import { useGetSongsByGenreQuery } from '../redux/services/shazamCore'
 import { selectGenreListId } from '@/redux/features/playerSlice'
@@ -11,17 +10,15 @@ const Discover = () => {
   const { activeSong, isPlaying, genreListId } = useSelector((state: any) => state.player)
 
   // @ts-ignore
-  const { data, isFetching, error } = useGetSongsByGenreQuery(genreListId || 'POP')
+  const { data } = useGetSongsByGenreQuery(genreListId || 'POP')
   const dispatch = useDispatch()
 
   const genreTitle = genres.find(({ value }) => value === genreListId)?.title
 
-  // if (isFetching) return <Loader title="Loading songs..." />
-  // if (error) return <Error />
   return (
     <div className="flex flex-col">
       <div className="flex flex-col items-center justify-between mt-4 mb-10 sm:flex-row">
-        <h2 className={`text-3xl font-bold text-left ${darkMode && 'text-[#C1D0B5]'}`}>Discove{genreTitle}</h2>
+        <h2 className={`text-3xl font-bold text-left ${darkMode && 'text-[#C1D0B5]'}`}>Discover {genreTitle}</h2>
         <select
           onChange={(e) => {
             dispatch(selectGenreListId(e.target.value))

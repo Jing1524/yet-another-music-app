@@ -34,7 +34,6 @@ const TopCharts = () => {
             )
           })}
         </div>
-        CountryTracks
       </div>
     </Layout>
   )

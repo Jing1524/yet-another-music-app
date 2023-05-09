@@ -43,7 +43,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className={`md:flex hidden flex-col w-[200px] py-10 px-4 ${darkMode ? 'bg-[#191624]' : 'bg-[#C1D0B5]'}`}>
+      <div className={`md:flex hidden flex-col w-[200px] py-10 px-4 ${darkMode ? 'bg-[#191624]' : 'bg-[#617A55]'}`}>
         <Lottie options={defaultOptions} height={150} width={150} />
         <NavLinks />
         <button
@@ -52,7 +52,7 @@ const Sidebar = () => {
             darkMode && 'text-[#C1D0B5]'
           } border border-2 border-[#C1D0B5] py-2 px-4 rounded-lg hover:bg-[#617A55]`}
         >
-          toggle
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
         </button>
       </div>
       <div className="absolute block md:hidden top-6 right-3">
@@ -75,7 +75,7 @@ const Sidebar = () => {
             darkMode && 'text-[#C1D0B5]'
           } border border-2 border-[#C1D0B5] py-2 px-4 rounded-lg hover:bg-[#617A55]`}
         >
-          toggle
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
         </button>
       </div>
     </>
