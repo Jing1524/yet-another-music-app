@@ -44,6 +44,13 @@ const Sidebar = () => {
   return (
     <>
       <div className={`md:flex hidden flex-col w-[200px] py-10 px-4 ${darkMode ? 'bg-[#191624]' : 'bg-[#617A55]'}`}>
+        <h1 className={`font-bold ${darkMode && 'text-[#617A55]'}`}>
+          YET <br />
+          ANOTHER
+          <br />
+          MUSIC <br />
+          APP
+        </h1>
         <Lottie options={defaultOptions} height={150} width={150} />
         <NavLinks />
         <button

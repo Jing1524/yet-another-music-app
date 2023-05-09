@@ -23,7 +23,7 @@ type Props = {
 }
 
 export function ModeToggleProvider({ children }: Props) {
-  const [darkMode, setDarkMode] = useState<boolean>(false)
+  const [darkMode, setDarkMode] = useState<boolean>(true)
 
   const toggleDarkMode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode)

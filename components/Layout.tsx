@@ -20,7 +20,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
   return (
     <div className="min-h-[100vh] overflow-x-hidden scroll-smooth">
       <Head>
-        <title>Another Music App</title>
+        <title>Yet Another Music App</title>
 
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
