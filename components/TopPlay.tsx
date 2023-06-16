@@ -17,14 +17,14 @@ const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, hand
       <h3 className={`mr-3 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{idx + 1}.</h3>
       <div className="flex flex-row items-center justify-between flex-1">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={song?.images?.coverart} alt={song?.title} className="w-20 h-20 rounded-lg " />
+        <img src={song?.song_art_image_thumbnail_url} alt={song?.title} className="w-20 h-20 rounded-lg " />
         <div className="flex flex-col justify-center flex-1 mx-3">
           <Link href={`/songs/${song.key}`}>
             <p className={`text-xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.title}</p>
           </Link>
-          <Link href={`/artists/${song.artists[0].adamid}`}>
+          {/* <Link href={`/artists/${song.artists[0].adamid}`}>
             <p className={`mt-1 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.subtitle}</p>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <PlayPause
@@ -44,6 +44,7 @@ const TopPlay = () => {
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   // @ts-ignore
   const { data } = useGetTopChartsQuery()
+
   const divRef = useRef(null)
 
   useEffect(() => {
@@ -53,8 +54,8 @@ const TopPlay = () => {
     }
   }, [])
 
-  const topPlays = data?.slice(0, 5)
-
+  const topPlays = data?.chart_items.slice(0, 5)
+  console.log(topPlays)
   const handlePauseClick = () => {
     dispatch(playPause(false))
   }
@@ -73,16 +74,17 @@ const TopPlay = () => {
           </Link>
         </div>
         <div className="flex flex-col gap-1 mt-4">
-          {topPlays?.map((song: any, idx: number) => {
+          {topPlays?.map((track: any, idx: number) => {
+            console.log(track.item)
             return (
               <TopChartCard
-                key={song.key}
-                song={song}
+                key={track.item.id}
+                song={track.item}
                 idx={idx}
                 isPlaying={isPlaying}
                 activeSong={activeSong}
                 handlePauseClick={handlePauseClick}
-                handlePlayClick={() => handlePlayClick(song, idx)}
+                handlePlayClick={() => handlePlayClick(track.item, idx)}
               />
             )
           })}
@@ -104,17 +106,20 @@ const TopPlay = () => {
           modules={[FreeMode]}
           className="mt-4"
         >
-          {topPlays?.map((song: any, idx: number) => {
+          {topPlays?.map((track: any, idx: number) => {
             return (
               <SwiperSlide
-                key={song.key}
+                key={track.item.id}
                 style={{ width: '25%', height: 'auto' }}
                 className="rounded-full shadow-lg animate-slideright"
               >
-                <Link href={`/artists/${song?.artists[0].adamid}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={song?.images.background} alt="artist name" className="object-cover w-full rounded-full" />
-                </Link>
+                {/* <Link href={`/artists/${track.item?.artists[0].adamid}`}> */}
+                <img
+                  src={track?.item.primary_artist.image_url}
+                  alt="artist name"
+                  className="object-cover w-full rounded-full"
+                />
+                {/* </Link> */}
               </SwiperSlide>
             )
           })}

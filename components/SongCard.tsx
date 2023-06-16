@@ -7,6 +7,7 @@ import { playPause, setActiveSong } from '../redux/features/playerSlice'
 import { useModeToggle } from '@/context/modeProvider'
 
 const SongCard = ({ song, idx, data, isPlaying, activeSong }: any) => {
+  console.log(song)
   // dispatch -> update state
   const dispatch = useDispatch()
   const { darkMode } = useModeToggle()
@@ -40,7 +41,7 @@ const SongCard = ({ song, idx, data, isPlaying, activeSong }: any) => {
           />
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img alt="song image" src={song.images?.coverart} />
+        <img alt="song image" src={song?.song_art_image_url} />
       </div>
       <div className="flex flex-col mt-4">
         <p className={`text-lg font-semibold truncate ${darkMode && 'text-[#C1D0B5]'}`}>
