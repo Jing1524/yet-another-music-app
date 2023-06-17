@@ -11,6 +11,7 @@ import 'swiper/css/free-mode'
 import { useModeToggle } from '@/context/modeProvider'
 
 const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, handlePlayClick }: any) => {
+  console.log({ song })
   const { darkMode } = useModeToggle()
   return (
     <div className="flex flex-row items-center w-full p-4 py-2 mb-2 rounded-lg cursor-pointer hover:bg-white/5">
@@ -19,7 +20,7 @@ const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, hand
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={song?.song_art_image_thumbnail_url} alt={song?.title} className="w-20 h-20 rounded-lg " />
         <div className="flex flex-col justify-center flex-1 mx-3">
-          <Link href={`/songs/${song.key}`}>
+          <Link href={`/songs/${song.id}`}>
             <p className={`text-xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.title}</p>
           </Link>
           {/* <Link href={`/artists/${song.artists[0].adamid}`}>
@@ -55,7 +56,7 @@ const TopPlay = () => {
   }, [])
 
   const topPlays = data?.chart_items.slice(0, 5)
-  console.log(topPlays)
+
   const handlePauseClick = () => {
     dispatch(playPause(false))
   }
@@ -75,7 +76,6 @@ const TopPlay = () => {
         </div>
         <div className="flex flex-col gap-1 mt-4">
           {topPlays?.map((track: any, idx: number) => {
-            console.log(track.item)
             return (
               <TopChartCard
                 key={track.item.id}

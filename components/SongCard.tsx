@@ -7,7 +7,6 @@ import { playPause, setActiveSong } from '../redux/features/playerSlice'
 import { useModeToggle } from '@/context/modeProvider'
 
 const SongCard = ({ song, idx, data, isPlaying, activeSong }: any) => {
-  console.log(song)
   // dispatch -> update state
   const dispatch = useDispatch()
   const { darkMode } = useModeToggle()
