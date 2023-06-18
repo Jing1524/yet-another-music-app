@@ -29,7 +29,7 @@ const DetailsHeader = ({ artistId, artistData, songData }: any) => {
               className={`mt-2 text-base ${darkMode && 'text-[#C1D0B5]'}`}
               href={`/artists/${songData?.artists[0].adamid}`}
             >
-              <p>{songData?.subtitle}</p>
+              <p>By {songData?.subtitle}</p>
             </Link>
           )}
           <p className={`mt-2 text-base ${darkMode && 'text-[#C1D0B5]'}`}>

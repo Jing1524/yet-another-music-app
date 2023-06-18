@@ -40,7 +40,7 @@ const SongCard = ({ song, idx, data, isPlaying, activeSong }: any) => {
           />
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img alt="song image" src={song.images?.coverart} />
+        <img alt="song image" src={song?.images?.coverart ? song?.images?.coverart : song?.images?.background} />
       </div>
       <div className="flex flex-col mt-4">
         <p className={`text-lg font-semibold truncate ${darkMode && 'text-[#C1D0B5]'}`}>

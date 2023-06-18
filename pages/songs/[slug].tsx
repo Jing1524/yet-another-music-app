@@ -7,13 +7,15 @@ import { setActiveSong, playPause } from '@/redux/features/playerSlice'
 import { useGetSongDetailsQuery, useGetRelatedSongsQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
 import { useModeToggle } from '@/context/modeProvider'
+
 const SongDetails = () => {
   const { darkMode } = useModeToggle()
   const { query } = useRouter()
   const dispatch = useDispatch()
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   const { data: songData, isFetching: isFetchingSongDetails } = useGetSongDetailsQuery(query.slug)
-  const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(query.slug)
+
+  const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(songData?.artists[0].adamid)
 
   const handlePauseClick = () => {
     dispatch(playPause(false))
