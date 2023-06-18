@@ -12,9 +12,6 @@ const Discover = () => {
 
   // @ts-ignore
   const { data: songData } = useGetTopChartsQuery()
-  console.log('for detail', songData) // array of keys, using key to get the genra from the song details
-
-  //console.log('for genre', data?.global?.genres.name)
 
   //const genreTrack = data?.chart_items
 

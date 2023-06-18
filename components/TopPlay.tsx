@@ -11,7 +11,6 @@ import 'swiper/css/free-mode'
 import { useModeToggle } from '@/context/modeProvider'
 
 const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, handlePlayClick }: any) => {
-  console.log({ song })
   const { darkMode } = useModeToggle()
   return (
     <div className="flex flex-row items-center w-full p-4 py-2 mb-2 rounded-lg cursor-pointer hover:bg-white/5">

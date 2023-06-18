@@ -2,7 +2,6 @@ import { useModeToggle } from '@/context/modeProvider'
 import Link from 'next/link'
 
 const DetailsHeader = ({ artistId, artistData, songData }: any) => {
-  console.log(songData)
   const { darkMode } = useModeToggle()
   return (
     <div className="relative flex flex-col w-full">
@@ -14,9 +13,9 @@ const DetailsHeader = ({ artistId, artistData, songData }: any) => {
         <img
           alt="art"
           src={
-            // artistId
-            //   ? artistData?.data[0].avatar.replace('{w}', '500').replace('{h}', '500')
-            songData?.images?.coverart
+            artistId
+              ? artistData?.data[0].avatar.replace('{w}', '500').replace('{h}', '500')
+              : songData?.images?.coverart
           }
           className="object-cover border-2 rounded-full shadow-xl sm:w-48 w-28 sm:h-48 h-28 shadow-black"
         />

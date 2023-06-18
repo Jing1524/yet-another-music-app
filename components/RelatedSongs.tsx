@@ -2,7 +2,6 @@ import { useModeToggle } from '@/context/modeProvider'
 import SongBar from './SongBar'
 
 const RelatedSongs = ({ data, isPlaying, activeSong, handlePauseClick, handlePlayClick, artistId }: any) => {
-  console.log(data)
   const { darkMode } = useModeToggle()
   return (
     <div className="flex flex-col">

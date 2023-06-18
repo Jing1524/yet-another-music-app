@@ -16,8 +16,6 @@ const SongDetails = () => {
 
   const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(songData?.artists[0].adamid)
 
-  //const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(query.slug)
-  //console.log(data?.song_recommendations.recommendations)
   const handlePauseClick = () => {
     dispatch(playPause(false))
   }
