@@ -2,6 +2,7 @@ import { useModeToggle } from '@/context/modeProvider'
 import Link from 'next/link'
 
 const DetailsHeader = ({ artistId, artistData, songData }: any) => {
+  console.log(songData)
   const { darkMode } = useModeToggle()
   return (
     <div className="relative flex flex-col w-full">
@@ -15,28 +16,25 @@ const DetailsHeader = ({ artistId, artistData, songData }: any) => {
           src={
             // artistId
             //   ? artistData?.data[0].avatar.replace('{w}', '500').replace('{h}', '500')
-            songData?.song?.song_art_image_thumbnail_url
+            songData?.images?.coverart
           }
           className="object-cover border-2 rounded-full shadow-xl sm:w-48 w-28 sm:h-48 h-28 shadow-black"
         />
 
         <div className="ml-5 ">
           <p className={`text-xl font-bold sm:text-3xl ${darkMode && 'text-[#C1D0B5]'}`}>
-            {/* {artistId ? artistData?.data[0]?.attributes?.name : songData?.title} */}
-            {songData?.song?.full_title}
+            {artistId ? artistData?.data[0]?.attributes?.name : songData?.title}
           </p>
           {!artistId && (
             <Link
               className={`mt-2 text-base ${darkMode && 'text-[#C1D0B5]'}`}
-              // href={`/artists/${songData?.artists[0].adamid}`}
-              href=""
+              href={`/artists/${songData?.artists[0].adamid}`}
             >
               <p>By {songData?.subtitle}</p>
             </Link>
           )}
           <p className={`mt-2 text-base ${darkMode && 'text-[#C1D0B5]'}`}>
-            {/* {artistId ? artistData?.data[0]?.attributes?.genreNames[0] : songData?.genres?.primary} */}
-            {songData?.song?.primary_tag.name}
+            {artistId ? artistData?.data[0]?.attributes?.genreNames[0] : songData?.genres?.primary}
           </p>
         </div>
       </div>
