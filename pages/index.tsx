@@ -11,7 +11,7 @@ export default function Home() {
 
   const { genreListId } = useSelector((state: any) => state.player)
 
-  const { isFetching, error } = useGetSongsByGenreQuery(genreListId || 'POP')
+  const { isFetching, error } = useGetSongsByGenreQuery(genreListId || 'pop')
 
   const toggleDarkMode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode)

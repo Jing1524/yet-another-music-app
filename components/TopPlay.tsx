@@ -11,20 +11,21 @@ import 'swiper/css/free-mode'
 import { useModeToggle } from '@/context/modeProvider'
 
 const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, handlePlayClick }: any) => {
+  console.log({ song })
   const { darkMode } = useModeToggle()
   return (
     <div className="flex flex-row items-center w-full p-4 py-2 mb-2 rounded-lg cursor-pointer hover:bg-white/5">
       <h3 className={`mr-3 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{idx + 1}.</h3>
       <div className="flex flex-row items-center justify-between flex-1">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={song?.images?.coverart} alt={song?.title} className="w-20 h-20 rounded-lg " />
+        <img src={song?.song_art_image_thumbnail_url} alt={song?.title} className="w-20 h-20 rounded-lg " />
         <div className="flex flex-col justify-center flex-1 mx-3">
           <Link href={`/songs/${song?.key}`}>
             <p className={`text-xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.title}</p>
           </Link>
-          <Link href={`/artists/${song.artists[0].adamid}`}>
+          {/* <Link href={`/artists/${song.artists[0].adamid}`}>
             <p className={`mt-1 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.subtitle}</p>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <PlayPause

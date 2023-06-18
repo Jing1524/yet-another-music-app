@@ -4,10 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { DetailsHeader, Error, Loader, RelatedSongs } from '@/components'
 import { setActiveSong, playPause } from '@/redux/features/playerSlice'
 
-import { useGetSongDetailsQuery, useGetRelatedSongsQuery } from '@/redux/services/shazamCore'
+import { useGetSongDetailsQuery, useGetLyricsQuery, useGetRelatedSongsQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
 import { useModeToggle } from '@/context/modeProvider'
-
 const SongDetails = () => {
   const { darkMode } = useModeToggle()
   const { query } = useRouter()
@@ -17,6 +16,8 @@ const SongDetails = () => {
 
   const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(songData?.artists[0].adamid)
 
+  //const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(query.slug)
+  //console.log(data?.song_recommendations.recommendations)
   const handlePauseClick = () => {
     dispatch(playPause(false))
   }
@@ -25,7 +26,9 @@ const SongDetails = () => {
     dispatch(setActiveSong({ song, data, idx }))
     dispatch(playPause(true))
   }
-
+  const SongComponent = ({ html }: any) => {
+    return <div dangerouslySetInnerHTML={{ __html: html }} />
+  }
   if (isFetchingSongDetails || isFetchingRelatedSongs) return <Loader title="Searching song details" />
   if (error) return <Error />
 
@@ -36,19 +39,17 @@ const SongDetails = () => {
         <div className="mb-10">
           <h2 className={`text-3xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>Lyrics:</h2>
           <div className="mt-5">
-            {songData?.sections[1].type === 'LYRICS' ? (
-              songData?.sections[1].text.map((line: string, idx: number) => (
-                <p key={idx} className={`text-base ${darkMode && 'text-[#C1D0B5]'}`}>
-                  {line}
-                </p>
-              ))
+            {songData?.song.lyrics_state === 'complete' ? (
+              <div className={`text-base ${darkMode && 'text-[#C1D0B5]'}`}>
+                {/* <SongComponent html={htmlString} /> */}
+              </div>
             ) : (
               <p className={`my-1 text-base ${darkMode && 'text-[#C1D0B5]'}`}>Sorry, no lyrics found!</p>
             )}
           </div>
         </div>
         <RelatedSongs
-          data={data}
+          data={data?.song_recommendations.recommendations}
           isPlaying={isPlaying}
           activeSong={activeSong}
           handlePauseClick={handlePauseClick}
