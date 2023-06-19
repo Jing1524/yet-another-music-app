@@ -10,7 +10,8 @@ const Discover = () => {
   const { activeSong, isPlaying, genreListId } = useSelector((state: any) => state.player)
 
   // @ts-ignore
-  const { data } = useGetSongsByGenreQuery(genreListId || 'POP')
+  const { data: songData } = useGetSongsByGenreQuery(genreListId || 'genre-global-chart-12')
+
   const dispatch = useDispatch()
 
   const genreTitle = genres.find(({ value }) => value === genreListId)?.title
@@ -23,10 +24,10 @@ const Discover = () => {
           onChange={(e) => {
             dispatch(selectGenreListId(e.target.value))
           }}
-          value={genreListId || 'Pop'}
+          value={genreListId || 'Worldwide'}
           className={`p-2 mt-5 text-sm rounded-lg outline-none sm:mt-0 w-[10rem] mr-10 ${darkMode && 'bg-[#5F7161]'}`}
         >
-          {genres.map((genre) => (
+          {genres.map((genre: any) => (
             <option key={genre.value} value={genre.value}>
               {genre.title}
             </option>
@@ -35,8 +36,15 @@ const Discover = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-12 sm:justify-start ">
-        {data?.map((song: any, idx: number) => (
-          <SongCard key={idx} song={song} idx={idx} activeSong={activeSong} isPlaying={isPlaying} data={data} />
+        {songData?.tracks.map((track: any, idx: number) => (
+          <SongCard
+            key={track.key}
+            song={track}
+            idx={idx}
+            activeSong={activeSong}
+            isPlaying={isPlaying}
+            data={songData?.tracks}
+          />
         ))}
       </div>
     </div>

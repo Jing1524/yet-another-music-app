@@ -19,11 +19,11 @@ const TopChartCard = ({ song, idx, isPlaying, activeSong, handlePauseClick, hand
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={song?.images?.coverart} alt={song?.title} className="w-20 h-20 rounded-lg " />
         <div className="flex flex-col justify-center flex-1 mx-3">
-          <Link href={`/songs/${song.key}`}>
+          <Link href={`/songs/${song?.key}`}>
             <p className={`text-xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.title}</p>
           </Link>
           <Link href={`/artists/${song.artists[0].adamid}`}>
-            <p className={`mt-1 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>{song.subtitle}</p>
+            <p className={`mt-1 text-base font-bold ${darkMode && 'text-[#C1D0B5]'}`}>By {song.subtitle}</p>
           </Link>
         </div>
       </div>
@@ -43,7 +43,8 @@ const TopPlay = () => {
   const dispatch = useDispatch()
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   // @ts-ignore
-  const { data } = useGetTopChartsQuery()
+  const { data } = useGetTopChartsQuery('en-US')
+
   const divRef = useRef(null)
 
   useEffect(() => {
@@ -53,7 +54,7 @@ const TopPlay = () => {
     }
   }, [])
 
-  const topPlays = data?.slice(0, 5)
+  const topPlays = data?.tracks.slice(0, 5)
 
   const handlePauseClick = () => {
     dispatch(playPause(false))
@@ -68,21 +69,21 @@ const TopPlay = () => {
       <div className="flex flex-col w-full">
         <div className="flex items-center justify-between felx-row">
           <h2 className={`text-2xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>Top Charts</h2>
-          <Link href="/top-charts">
+          {/* <Link href="/top-charts">
             <p className={`text-base curcor-pointer ${darkMode && 'text-[#C1D0B5]'}`}>See more</p>
-          </Link>
+          </Link> */}
         </div>
         <div className="flex flex-col gap-1 mt-4">
-          {topPlays?.map((song: any, idx: number) => {
+          {topPlays?.map((track: any, idx: number) => {
             return (
               <TopChartCard
-                key={song.key}
-                song={song}
+                key={track.key}
+                song={track}
                 idx={idx}
                 isPlaying={isPlaying}
                 activeSong={activeSong}
                 handlePauseClick={handlePauseClick}
-                handlePlayClick={() => handlePlayClick(song, idx)}
+                handlePlayClick={() => handlePlayClick(track, idx)}
               />
             )
           })}
@@ -104,16 +105,19 @@ const TopPlay = () => {
           modules={[FreeMode]}
           className="mt-4"
         >
-          {topPlays?.map((song: any, idx: number) => {
+          {topPlays?.map((track: any, idx: number) => {
             return (
               <SwiperSlide
-                key={song.key}
+                key={track.key}
                 style={{ width: '25%', height: 'auto' }}
                 className="rounded-full shadow-lg animate-slideright"
               >
-                <Link href={`/artists/${song?.artists[0].adamid}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={song?.images.background} alt="artist name" className="object-cover w-full rounded-full" />
+                <Link href={`/artists/${track?.artists[0].adamid}`}>
+                  <img
+                    src={track?.share?.avatar ? track?.share?.avatar : track?.share?.image}
+                    alt="artist name"
+                    className="object-cover w-full rounded-full"
+                  />
                 </Link>
               </SwiperSlide>
             )

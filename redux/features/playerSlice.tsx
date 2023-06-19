@@ -15,15 +15,17 @@ const playerSlice = createSlice({
   reducers: {
     setActiveSong: (state, action) => {
       state.activeSong = action.payload.song
-
+      console.log(action.payload)
       if (action.payload?.data?.tracks?.hits) {
         state.currentSongs = action.payload.data.tracks.hits
+        console.log('hits', state.currentSongs)
       } else if (action.payload?.data?.properties) {
         state.currentSongs = action.payload?.data?.tracks
+        console.log('tracks', state.currentSongs)
       } else {
         state.currentSongs = action.payload.data
       }
-      console.log(action)
+
       state.currentIndex = action.payload.idx
       state.isActive = true
     },

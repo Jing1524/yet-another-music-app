@@ -16,6 +16,7 @@ type Props = {
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => {
   const { activeSong } = useSelector((state: any) => state.player)
+
   const { darkMode } = useModeToggle()
   return (
     <div className="min-h-[100vh] overflow-x-hidden scroll-smooth">

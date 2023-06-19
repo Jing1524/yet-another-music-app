@@ -9,7 +9,7 @@ const TopCharts = () => {
   const { darkMode } = useModeToggle()
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   //@ts-ignore
-  const { data, isFetching, error } = useGetTopChartsQuery()
+  const { data, isFetching, error } = useGetTopChartsQuery('en-US')
 
   if (isFetching) return <Loader title="Loading top charts" />
   if (error) return <Error />
@@ -21,7 +21,7 @@ const TopCharts = () => {
           Discover Top Charts
         </h2>
         <div className="flex flex-wrap justify-center gap-8 sm:justify-start">
-          {data?.map((song: any, idx: number) => {
+          {data?.tracks.map((song: any, idx: number) => {
             return (
               <SongCard
                 key={song.key}
