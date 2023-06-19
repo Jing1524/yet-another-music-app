@@ -14,7 +14,7 @@ pnpm dev
 
 Open [http://localhost:3000] with your browser to see the result.
 
-# or
+or
 
 Checkout the app in production: [YAMA-ONE] (https://yama-one.vercel.app)
 
