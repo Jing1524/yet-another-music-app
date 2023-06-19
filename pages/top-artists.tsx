@@ -7,6 +7,7 @@ import { useModeToggle } from '@/context/modeProvider'
 const TopArtists = () => {
   //@ts-ignore
   const { data, isFetching, error } = useGetTopChartsQuery()
+
   const { darkMode } = useModeToggle()
   if (isFetching) return <Loader title="Loading top charts" />
   if (error) return <Error />
@@ -18,7 +19,7 @@ const TopArtists = () => {
           Discover Top Artists
         </h2>
         <div className="flex flex-wrap justify-center gap-8 sm:justify-start">
-          {data?.map((track: any) => {
+          {data?.tracks.map((track: any) => {
             return <ArtistCard key={track.key} track={track} />
           })}
         </div>
