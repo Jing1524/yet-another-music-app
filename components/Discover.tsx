@@ -1,28 +1,18 @@
 import { SongCard } from '../components'
 import { genres } from '@/assets/constants'
-import {
-  useGetSongsByGenreQuery,
-  useGetTopChartsQuery,
-  useGetSongDetailsQuery,
-  useGetSongsByCountryQuery,
-} from '../redux/services/shazamCore'
+import { useGetSongsByGenreQuery } from '../redux/services/shazamCore'
 import { selectGenreListId } from '@/redux/features/playerSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useModeToggle } from '@/context/modeProvider'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
 
 const Discover = () => {
   const { darkMode } = useModeToggle()
   const { activeSong, isPlaying, genreListId } = useSelector((state: any) => state.player)
-  const [country, setCountry] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(true)
+
   // @ts-ignore
-  const { data: songData } = useGetTopChartsQuery(genreListId || 'genre-global-chart-12')
+  const { data: songData } = useGetSongsByGenreQuery(genreListId || 'genre-global-chart-12')
 
   const dispatch = useDispatch()
-  // @ts-ignore
-  const { data, isFetching, error } = useGetSongsByCountryQuery()
 
   const genreTitle = genres.find(({ value }) => value === genreListId)?.title
 

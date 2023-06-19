@@ -10,6 +10,7 @@ const ArtistCard = ({ track }: any) => {
       }`}
       onClick={() => router.push(`/artists/${track?.artists[0].adamid}`)}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         alt="artist"
         src={track?.share?.avatar ? track?.share?.avatar : track?.images?.coverart}

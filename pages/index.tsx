@@ -11,9 +11,7 @@ export default function Home() {
 
   const { genreListId } = useSelector((state: any) => state.player)
 
-  //const { isFetching, error } = useGetSongsByGenreQuery(genreListId || 'pop')
-  // @ts-ignore
-  const { isFetching, error } = useGetTopChartsQuery('en-US')
+  const { isFetching, error } = useGetSongsByGenreQuery(genreListId || 'genre-global-chart-12')
 
   const toggleDarkMode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode)
