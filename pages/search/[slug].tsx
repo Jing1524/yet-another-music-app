@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Error, Loader, SongCard } from '@/components'
-import { useGetSongsBySearchQuery } from '@/redux/services/shazamCore'
+//import { useGetSongsBySearchQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
 import { useModeToggle } from '@/context/modeProvider'
 
@@ -24,7 +24,7 @@ const Search = () => {
           Showing results for <span>{searchTerm}</span>
         </h2>
         <div className="flex flex-wrap justify-center gap-8 sm:justify-start">
-          {songs?.map((song: any, idx: number) => {
+          {/* {songs?.map((song: any, idx: number) => {
             return (
               <SongCard
                 key={song.key}
@@ -35,7 +35,7 @@ const Search = () => {
                 idx={idx}
               />
             )
-          })}
+          })} */}
         </div>
       </div>
     </Layout>
