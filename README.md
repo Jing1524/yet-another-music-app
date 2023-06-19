@@ -18,7 +18,7 @@ or
 
 Checkout the app in production: [YAMA-ONE] (https://yama-one.vercel.app)
 
-## Overview
+## TechStack Overview
 
 ```bash
 Next.js | TypeScript | Tailwind | reduxjs/toolkit | axois | shazamMusicApi
