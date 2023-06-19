@@ -22,7 +22,7 @@ const AblumDetailsHeader = ({ data }: any) => {
           </p>
           <p className={`mt-2 text-base ${darkMode && 'text-[#C1D0B5]'}`}>
             <b>Editorial Notes: </b>
-            {data?.data[0]?.attributes?.editorialNotes.short}
+            {data?.data[0]?.attributes?.editorialNotes?.short}
           </p>
           <p className={`mt-2 text-base ${darkMode && 'text-[#C1D0B5]'}`}>
             <b>Record Label</b> {data?.data[0]?.attributes?.recordLabel}

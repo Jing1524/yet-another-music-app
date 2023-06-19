@@ -24,7 +24,7 @@ const Searchbar = () => {
           name="search-field"
           autoComplete="off"
           id="search-field"
-          placeholder="search"
+          placeholder="Search by track title or artist name"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="flex-1 p-4 text-base placeholder-gray-500 bg-transparent border-none outline-none"

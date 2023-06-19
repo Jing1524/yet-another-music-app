@@ -19,6 +19,7 @@ const AlbumList = ({ album }: any) => {
         <div className="relative w-full h-56 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            loading="eager"
             className="w-full h-full rounded-lg"
             src={data?.data[0].attributes?.artwork?.url.replace('{w}', '1500').replace('{h}', '1500')}
             alt={data?.data[0]?.attributes.name}
