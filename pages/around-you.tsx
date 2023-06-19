@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Error, Loader, SongCard } from '@/components'
-import { useGetSongsByCountryQuery } from '@/redux/services/shazamCore'
+//import { useGetSongsByCountryQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
 import { useModeToggle } from '@/context/modeProvider'
 
@@ -11,7 +11,7 @@ const AroundYou = () => {
   const [country, setCountry] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(true)
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
-  const { data, isFetching, error } = useGetSongsByCountryQuery(country)
+  //const { data, isFetching, error } = useGetSongsByCountryQuery(country)
 
   useEffect(() => {
     axios
@@ -21,8 +21,8 @@ const AroundYou = () => {
       .finally(() => setLoading(false))
   }, [country])
 
-  if (isFetching && loading) return <Loader title="Loading songs in your country" />
-  if (error && country) return <Error />
+  // if (isFetching && loading) return <Loader title="Loading songs in your country" />
+  // if (error && country) return <Error />
 
   return (
     <Layout>
@@ -31,7 +31,7 @@ const AroundYou = () => {
           Music Around <span>{country}</span>
         </h2>
         <div className="flex flex-wrap justify-center gap-8 sm:justify-start">
-          {data?.map((song: any, idx: number) => {
+          {/* {data?.map((song: any, idx: number) => {
             return (
               <SongCard
                 key={song.key}
@@ -42,7 +42,7 @@ const AroundYou = () => {
                 idx={idx}
               />
             )
-          })}
+          })} */}
         </div>
       </div>
     </Layout>
