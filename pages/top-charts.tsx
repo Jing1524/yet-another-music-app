@@ -21,7 +21,7 @@ const TopCharts = () => {
           Discover Top Charts
         </h2>
         <div className="flex flex-wrap justify-center gap-8 sm:justify-start">
-          {data?.map((song: any, idx: number) => {
+          {data?.tracks.map((song: any, idx: number) => {
             return (
               <SongCard
                 key={song.key}
