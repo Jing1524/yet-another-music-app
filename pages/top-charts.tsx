@@ -9,7 +9,7 @@ const TopCharts = () => {
   const { darkMode } = useModeToggle()
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   //@ts-ignore
-  const { data, isFetching, error } = useGetTopChartsQuery()
+  const { data, isFetching, error } = useGetTopChartsQuery('en-US')
 
   if (isFetching) return <Loader title="Loading top charts" />
   if (error) return <Error />

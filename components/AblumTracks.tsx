@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import { useGetAlbumDetailsQuery } from '@/redux/services/shazamCore'
 
 const AlbumTracks = ({ data, isPlaying, activeSong, handlePauseClick, handlePlayClick, artistId }: any) => {
-  console.log(data?.data[0].relationships.tracks.data)
   const { darkMode } = useModeToggle()
   const trackData = data?.data[0].relationships.tracks.data
   return (

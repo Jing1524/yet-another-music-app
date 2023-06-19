@@ -13,7 +13,7 @@ export default function Home() {
 
   //const { isFetching, error } = useGetSongsByGenreQuery(genreListId || 'pop')
   // @ts-ignore
-  const { isFetching, error } = useGetTopChartsQuery()
+  const { isFetching, error } = useGetTopChartsQuery('en-US')
 
   const toggleDarkMode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode)

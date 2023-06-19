@@ -43,7 +43,7 @@ const TopPlay = () => {
   const dispatch = useDispatch()
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   // @ts-ignore
-  const { data } = useGetTopChartsQuery()
+  const { data } = useGetTopChartsQuery('en-US')
 
   const divRef = useRef(null)
 

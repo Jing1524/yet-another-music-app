@@ -6,7 +6,7 @@ import { useModeToggle } from '@/context/modeProvider'
 
 const TopArtists = () => {
   //@ts-ignore
-  const { data, isFetching, error } = useGetTopChartsQuery()
+  const { data, isFetching, error } = useGetTopChartsQuery('en-US')
 
   const { darkMode } = useModeToggle()
   if (isFetching) return <Loader title="Loading top charts" />

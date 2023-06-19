@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Error, Loader, SongCard } from '@/components'
-//import { useGetSongsByCountryQuery } from '@/redux/services/shazamCore'
+import { useGetSongsByCountryQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
 import { useModeToggle } from '@/context/modeProvider'
 
@@ -11,15 +11,8 @@ const AroundYou = () => {
   const [country, setCountry] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(true)
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
-  //const { data, isFetching, error } = useGetSongsByCountryQuery(country)
-
-  useEffect(() => {
-    axios
-      .get(`https://geo.ipify.org/api/v2/country?apiKey=${process.env.GEO_API_KEY}`)
-      .then((res) => setCountry(res.data.location.country))
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false))
-  }, [country])
+  // @ts-ignore
+  const { data, isFetching, error } = useGetSongsByCountryQuery()
 
   // if (isFetching && loading) return <Loader title="Loading songs in your country" />
   // if (error && country) return <Error />
