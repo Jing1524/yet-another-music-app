@@ -13,8 +13,6 @@ const Discover = () => {
   // @ts-ignore
   const { data: songData } = useGetTopChartsQuery()
 
-  //const genreTrack = data?.chart_items
-
   const dispatch = useDispatch()
 
   const genreTitle = genres.find(({ value }) => value === genreListId)?.title

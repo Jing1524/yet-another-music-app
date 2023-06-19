@@ -14,7 +14,7 @@ const DetailsHeader = ({ artistId, artistData, songData }: any) => {
           alt="art"
           src={
             artistId
-              ? artistData?.data[0].avatar.replace('{w}', '500').replace('{h}', '500')
+              ? artistData?.data[0].attributes.artwork.url.replace('{w}', '500').replace('{h}', '500')
               : songData?.images?.coverart
           }
           className="object-cover border-2 rounded-full shadow-xl sm:w-48 w-28 sm:h-48 h-28 shadow-black"

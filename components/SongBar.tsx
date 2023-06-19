@@ -35,15 +35,15 @@ const SongBar = ({ song, idx, artistId, isPlaying, activeSong, handlePauseClick,
           <p className={`mt-1 text-base ${darkMode && 'text-[#C1D0B5]'}`}>Album {song?.attributes?.albumName}</p>
         </div>
       </div>
-      {!artistId ? (
-        <PlayPause
-          isPlaying={isPlaying}
-          activeSong={activeSong}
-          song={song}
-          handlePause={handlePauseClick}
-          handlePlay={() => handlePlayClick(song, idx)}
-        />
-      ) : null}
+      {/* {!artistId ? ( */}
+      <PlayPause
+        isPlaying={isPlaying}
+        activeSong={activeSong}
+        song={song}
+        handlePause={handlePauseClick}
+        handlePlay={() => handlePlayClick(song, idx)}
+      />
+      {/* ) : null} */}
     </div>
   )
 }

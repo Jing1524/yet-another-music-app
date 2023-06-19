@@ -7,14 +7,23 @@ import { setActiveSong, playPause } from '@/redux/features/playerSlice'
 import { useGetSongDetailsQuery, useGetRelatedSongsQuery } from '@/redux/services/shazamCore'
 import Layout from '@/components/Layout'
 import { useModeToggle } from '@/context/modeProvider'
+import { useEffect, useState } from 'react'
 const SongDetails = () => {
   const { darkMode } = useModeToggle()
   const { query } = useRouter()
   const dispatch = useDispatch()
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
+
   const { data: songData, isFetching: isFetchingSongDetails } = useGetSongDetailsQuery(query.slug)
 
-  const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(songData?.artists[0].adamid)
+  const [artistId, setArtistId] = useState()
+
+  useEffect(() => {
+    if (songData) {
+      setArtistId(songData?.artists[0].adamid)
+    }
+  }, [songData])
+  const { data, isFetching: isFetchingRelatedSongs, error } = useGetRelatedSongsQuery(artistId)
 
   const handlePauseClick = () => {
     dispatch(playPause(false))
@@ -24,9 +33,7 @@ const SongDetails = () => {
     dispatch(setActiveSong({ song, data, idx }))
     dispatch(playPause(true))
   }
-  const SongComponent = ({ html }: any) => {
-    return <div dangerouslySetInnerHTML={{ __html: html }} />
-  }
+
   if (isFetchingSongDetails || isFetchingRelatedSongs) return <Loader title="Searching song details" />
   if (error) return <Error />
 

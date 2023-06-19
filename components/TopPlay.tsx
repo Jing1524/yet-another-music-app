@@ -69,9 +69,9 @@ const TopPlay = () => {
       <div className="flex flex-col w-full">
         <div className="flex items-center justify-between felx-row">
           <h2 className={`text-2xl font-bold ${darkMode && 'text-[#C1D0B5]'}`}>Top Charts</h2>
-          <Link href="/top-charts">
+          {/* <Link href="/top-charts">
             <p className={`text-base curcor-pointer ${darkMode && 'text-[#C1D0B5]'}`}>See more</p>
-          </Link>
+          </Link> */}
         </div>
         <div className="flex flex-col gap-1 mt-4">
           {topPlays?.map((track: any, idx: number) => {
