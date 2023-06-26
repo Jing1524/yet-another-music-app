@@ -31,7 +31,7 @@ const RelatedSongs = ({ data, isPlaying, activeSong, handlePauseClick, handlePla
         </div>
       ) : (
         <div className="flex flex-col w-full mt-6">
-          {data?.data.slice(0, 5).map((song: any, idx: number) => {
+          {data?.data?.slice(0, 5).map((song: any, idx: number) => {
             return (
               <SongBar
                 key={`${song.id}`}
