@@ -38,7 +38,7 @@ const playerSlice = createSlice({
       } else {
         state.activeSong = state.currentSongs[action.payload]
       }
-      console.log(action)
+
       state.currentIndex = action.payload
       state.isActive = true
     },
