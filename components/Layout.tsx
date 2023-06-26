@@ -16,7 +16,7 @@ type Props = {
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => {
   const { activeSong } = useSelector((state: any) => state.player)
-
+  console.log({ activeSong })
   const { darkMode } = useModeToggle()
   return (
     <div className="min-h-[100vh] overflow-x-hidden scroll-smooth">
@@ -44,7 +44,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           </div>
         </div>
 
-        {activeSong?.title && (
+        {(activeSong?.title || activeSong?.attributes?.name) && (
           <div
             className={`absolute h-28 bottom-0 left-0 right-0 flex animate-slideup backdrop-blur-lg rounded-t-3xl z-10 ${
               darkMode ? 'bg-gradient-to-br from-white/10 to-[#99A98F]' : 'bg-gradient-to-br from-black/10 to-[#99A98F]'

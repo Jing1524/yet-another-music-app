@@ -5,13 +5,23 @@ const Track = ({ isPlaying, isActive, activeSong }: any) => (
     <div
       className={`${isPlaying && isActive ? 'animate-[spin_3s_linear_infinite]' : ''} hidden sm:block h-16 w-16 mr-4`}
     >
-      <img src={activeSong?.images?.coverart} alt="cover art" className="rounded-full" />
+      <img
+        src={
+          activeSong?.images?.coverart
+            ? activeSong?.images?.coverart
+            : activeSong?.attributes?.artwork?.url.replace('{w}', '500').replace('{h}', '500')
+        }
+        alt="cover art"
+        className="rounded-full"
+      />
     </div>
     <div className="w-[50%]">
       <p className="text-lg font-bold text-white truncate">
-        {activeSong?.title ? activeSong?.title : 'No active Song'}
+        {activeSong?.title ? activeSong?.title : activeSong?.attributes?.name}
       </p>
-      <p className="text-gray-300 truncate">{activeSong?.subtitle ? activeSong?.subtitle : 'No active Song'}</p>
+      <p className="text-gray-300 truncate">
+        {activeSong?.subtitle ? activeSong?.subtitle : activeSong?.attributes?.albumName}
+      </p>
     </div>
   </div>
 )

@@ -13,7 +13,7 @@ const AroundYou = () => {
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   // @ts-ignore
   const { data, isFetching, error } = useGetTopChartsQuery('en-US')
-  console.log('around you', data?.tracks)
+
   useEffect(() => {
     axios
       .get(`https://geo.ipify.org/api/v2/country?apiKey=${process.env.GEO_API_KEY}`)

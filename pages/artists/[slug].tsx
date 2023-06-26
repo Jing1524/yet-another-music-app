@@ -11,7 +11,7 @@ const ArtistDetails = () => {
   const artistId = query.slug
   const { activeSong, isPlaying } = useSelector((state: any) => state.player)
   const { data: artistData, isFetching: isFetchingArtistDetails, error } = useGetArtistDetailsQuery(artistId)
-  console.log(artistData?.data[0])
+
   if (isFetchingArtistDetails) return <Loader title="Loading artist details" />
   if (error) return <Error />
 
